@@ -36,13 +36,13 @@ function run() {
             tl.debug('applicationType:' + applicationType);
             tl.debug('bundleFilePath:' + bundleFilePath);
             tl.debug('extractDirectoryPath:' + extractDirectoryPath);
-            if (applicationType === "ios") {
+            if (applicationType === "iOS") {
                 yield runios();
             }
-            else if (applicationType === "android") {
+            else if (applicationType === "Android") {
                 yield runAndroid();
             }
-            else if (applicationType === "uwp") {
+            else if (applicationType === "UWP") {
                 yield runUwp();
             }
         }
