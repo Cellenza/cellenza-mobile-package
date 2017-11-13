@@ -16,6 +16,10 @@ async function signApp(directoryPath: string) {
     await tl.cp(profisioningProfile, directoryPath + 'embedded.mobileprovision', '-f');
 }
 
+async function zipFile(directoryPath: string) {
+    await tl.exec('zip', '-qry ' + directoryPath + ' ' + bundleFilePath);
+}
+
 async function run() {
     try {
         //do your actions
@@ -24,14 +28,14 @@ async function run() {
         tl.debug('certificateName:' + certificateName);
         tl.debug('provisioningId:' + provisioningId);
 
-        var payloadAppPath = extractDirectoryPath + '/Payload/*.app/';
-
-        var paths = tl.find(bundleFilePath);
+        var paths = tl.find(extractDirectoryPath);
 
         for (var appPath in paths) {
             tl.debug('Find APP :' + appPath);
 
-            await signApp(payloadAppPath);
+            await signApp(appPath);
+
+            await zipFile(appPath);
         }
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, err.message);
