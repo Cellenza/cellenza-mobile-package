@@ -1,0 +1,48 @@
+{
+  "id": "c5080a24-dea5-4b70-b72a-cbef73e24fea",
+  "name": "cellenza-mobile-unpack",
+  "friendlyName": "Mobile unpack",
+  "description": "Unpack mobile package",
+  "helpMarkDown": "",
+  "category": "Package",
+  "visibility": [ "Build", "Release" ],
+  "author": "",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "demands": [],
+  "inputs": [
+    {
+      "name": "applicationType",
+      "type": "pickList",
+      "label": "Application type",
+      "defaultValue": "iOS",
+      "required": true,
+      "options": {
+        "ios": "iOS",
+        "android": "Android",
+        "uwp": "UWP"
+      }
+    },
+    {
+      "name": "bundleFilePath",
+      "type": "filePath",
+      "label": "Bundle file path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "IPA, APK or APPX file"
+    },
+    {
+      "name": "extractDirectoryPath",
+      "type": "filePath",
+      "label": "Extract directory path",
+      "defaultValue": "",
+      "required": false
+    }
+  ],
+  "instanceNameFormat": "cellenza-mobile-unpack",
+  "execution": { "Node": { "target": "cellenza-mobile-unpack.js" } }
+
+}

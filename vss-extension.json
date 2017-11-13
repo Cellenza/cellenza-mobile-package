@@ -1,0 +1,78 @@
+{
+  "manifestVersion": 1,
+  "id": "cellenza-mobile-package",
+  "version": "0.1.2",
+  "name": "CellenzaMobilePackage",
+  "scopes": [],
+  "description": "My extension makes hubs great again",
+  "publisher": "cellenza",
+  "galleryFlags": [
+    "Preview"
+  ],
+  "icons": {
+    "default": "static/images/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "demands": [
+    "api-version/3.0"
+  ],
+  "tags": [
+    "Sample"
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "screenshots": [
+    {
+      "path": "static/images/screen1.png"
+    }
+  ],
+  "content": {
+    "license": {
+      "path": "license.md"
+    },
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://bit.ly"
+    },
+    "support": {
+      "uri": "https://bit.ly"
+    },
+    "issues": {
+      "uri": "https://bit.ly"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://bit.ly"
+  },
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "cellenza-mobile-unpack"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "cellenza-mobile-unpack",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "cellenza-mobile-unpack"
+      }
+    }
+  ]
+}
