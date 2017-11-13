@@ -2,8 +2,8 @@ import tl = require('vsts-task-lib/task');
 //npm install vsts-task-lib
 
 // Get task parameters
-let bundleFilePath: string = tl.getPathInput('bundleFilePath', true, true);
-let extractDirectoryPath: string = tl.getInput('extractDirectoryPath', true);
+let bundleFilePath: string = tl.getPathInput('bundleFilePath', true, false);
+let extractDirectoryPath: string = tl.getPathInput('extractDirectoryPath', true, true);
 let certificateName: string = tl.getInput('certificateName', true);
 let provisioningId: string = tl.getInput('provisioningId', true);
 
@@ -27,6 +27,16 @@ async function run() {
         tl.debug('extractDirectoryPath:' + extractDirectoryPath);
         tl.debug('certificateName:' + certificateName);
         tl.debug('provisioningId:' + provisioningId);
+
+        var paths = tl.find('/Users/');
+
+        for (var user in paths) {
+            if (tl.exist(user + '/Library/MobileDevice/Provisioning Profiles/' + provisioningId + '.mobileprovision')) {
+                provisioningProfileRootPath = user + '/Library/MobileDevice/Provisioning Profiles/';
+            }
+        }
+
+        tl.debug('Find Provisioning profile on :' + provisioningProfileRootPath);
 
         var paths = tl.find(extractDirectoryPath);
 
