@@ -12,7 +12,7 @@ async function runios() {
 }
 
 async function runAndroid() {
-    tl.debug('Android : Not implemented');
+    await tl.exec('unzip', '-qq ' + bundleFilePath + ' -d ' + extractDirectoryPath);
 }
 
 async function runUwp() {

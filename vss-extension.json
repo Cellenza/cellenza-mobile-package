@@ -61,17 +61,20 @@
   "files": [
     {
       "path": "cellenza-mobile-unpack"
+    },
+    {
+      "path": "cellenza-mobile-pack-ios"
     }
   ],
   "contributions": [
     {
-      "id": "cellenza-mobile-unpack",
+      "id": "cellenza-mobile",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "type": "ms.vss-distributed-task.task",
       "properties": {
-        "name": "cellenza-mobile-unpack"
+        "name": "Cellenza"
       }
     }
   ]

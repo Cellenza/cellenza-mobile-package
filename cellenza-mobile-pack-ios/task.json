@@ -1,0 +1,54 @@
+{
+  "id": "c5080a24-dea5-4b70-b72a-cbef73e24fea",
+  "name": "cellenza-mobile-pack-ios",
+  "friendlyName": "Mobile unpack",
+  "description": "Pack ios mobile package",
+  "helpMarkDown": "",
+  "category": "Package",
+  "visibility": [ "Build", "Release" ],
+  "author": "",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "demands": [],
+  "inputs": [
+
+    {
+      "name": "extractDirectoryPath",
+      "type": "filePath",
+      "label": "Extract directory path",
+      "defaultValue": "",
+      "required": false
+    },
+    {
+      "name": "bundleFilePath",
+      "type": "filePath",
+      "label": "Bundle destination file path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "IPA destination file path"
+    },
+    {
+      "name": "certificateName",
+      "type": "string",
+      "label": "iOS Certficate name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "provisioningId",
+      "type": "string",
+      "label": "iOS Provisioning Profile",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": ""
+    }
+
+  ],
+  "instanceNameFormat": "cellenza-mobile-pack-ios",
+  "execution": { "Node": { "target": "cellenza-mobile-pack-ios.js" } }
+
+}
