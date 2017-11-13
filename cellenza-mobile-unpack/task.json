@@ -40,13 +40,6 @@
       "label": "Extract directory path",
       "defaultValue": "",
       "required": true
-    },
-    {
-      "name": "entitlements",
-      "type": "filePath",
-      "label": "Entitlements.plist",
-      "defaultValue": "",
-      "required": true
     }
   ],
   "instanceNameFormat": "cellenza-mobile-unpack",
