@@ -27,11 +27,11 @@ async function run() {
         tl.debug('bundleFilePath:' + bundleFilePath);
         tl.debug('extractDirectoryPath:' + extractDirectoryPath);
 
-        if (applicationType === "ios") {
+        if (applicationType === "iOS") {
             await runios();
-        } else if (applicationType === "android") {
+        } else if (applicationType === "Android") {
             await runAndroid();
-        } else if (applicationType === "uwp") {
+        } else if (applicationType === "UWP") {
             await runUwp();
         }
 

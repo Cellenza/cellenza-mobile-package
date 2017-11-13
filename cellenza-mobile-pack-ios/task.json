@@ -45,8 +45,14 @@
       "defaultValue": "",
       "required": false,
       "helpMarkDown": ""
+    },
+    {
+      "name": "entitlements",
+      "type": "filePath",
+      "label": "Entitlements.plist",
+      "defaultValue": "",
+      "required": true
     }
-
   ],
   "instanceNameFormat": "cellenza-mobile-pack-ios",
   "execution": { "Node": { "target": "cellenza-mobile-pack-ios.js" } }
