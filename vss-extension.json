@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "cellenza-mobile-package",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "name": "CellenzaMobilePackage",
   "scopes": [],
   "description": "My extension makes hubs great again",

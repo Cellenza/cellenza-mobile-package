@@ -4,7 +4,9 @@
     "gallery-publish": "tfx extension publish --rev-version",
     "clean": "rimraf ./*.vsix",
     "compile": "tsc -p .",
-    "install-task-lib" : "cd cellenza-mobile-unpack && npm install --save-dev"
+    "install-task-lib-unpack": "cd cellenza-mobile-unpack && npm install --save-dev",
+    "install-task-lib-pack-ios": "cd cellenza-mobile-pack-ios && npm install --save-dev",
+    "install-task-lib": "npm run install-task-lib-unpack && npm run install-task-lib-pack-ios"
   },
   "devDependencies": {
     "@types/node": "^8.0.7",

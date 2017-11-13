@@ -12,38 +12,34 @@ const tl = require("vsts-task-lib/task");
 //npm install vsts-task-lib
 // Get task parameters
 let bundleFilePath = tl.getPathInput('bundleFilePath', true, true);
-let applicationType = tl.getInput('applicationType', true);
 let extractDirectoryPath = tl.getInput('extractDirectoryPath', true);
-function runios() {
+let certificateName = tl.getInput('certificateName', true);
+let provisioningId = tl.getInput('provisioningId', true);
+var provisioningProfileRootPath = '';
+function signApp(directoryPath) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield tl.exec('unzip', '-qq ' + bundleFilePath + ' -d ' + extractDirectoryPath);
+        var profisioningProfile = provisioningProfileRootPath + '/' + provisioningId + '.mobileprovision';
+        yield tl.cp(profisioningProfile, directoryPath + 'embedded.mobileprovision', '-f');
     });
 }
-function runAndroid() {
+function zipFile(directoryPath) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield tl.exec('unzip', '-qq ' + bundleFilePath + ' -d ' + extractDirectoryPath);
-    });
-}
-function runUwp() {
-    return __awaiter(this, void 0, void 0, function* () {
-        tl.debug('UWP : Not implemented');
+        yield tl.exec('zip', '-qry ' + directoryPath + ' ' + bundleFilePath);
     });
 }
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             //do your actions
-            tl.debug('applicationType:' + applicationType);
             tl.debug('bundleFilePath:' + bundleFilePath);
             tl.debug('extractDirectoryPath:' + extractDirectoryPath);
-            if (applicationType === "ios") {
-                yield runios();
-            }
-            else if (applicationType === "android") {
-                yield runAndroid();
-            }
-            else if (applicationType === "uwp") {
-                yield runUwp();
+            tl.debug('certificateName:' + certificateName);
+            tl.debug('provisioningId:' + provisioningId);
+            var paths = tl.find(extractDirectoryPath);
+            for (var appPath in paths) {
+                tl.debug('Find APP :' + appPath);
+                yield signApp(appPath);
+                yield zipFile(appPath);
             }
         }
         catch (err) {

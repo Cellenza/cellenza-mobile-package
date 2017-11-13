@@ -3,8 +3,9 @@
         "target": "ES6",
         "module": "commonjs"
     },
-    "exclude": [
+  "exclude": [
     "node_modules",
-    "cellenza-mobile-unpack/node_modules"
+    "cellenza-mobile-unpack/node_modules",
+    "cellenza-mobile-pack-ios/node_modules"
   ]
 }
