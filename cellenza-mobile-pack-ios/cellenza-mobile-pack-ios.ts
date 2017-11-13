@@ -3,37 +3,24 @@ import tl = require('vsts-task-lib/task');
 
 // Get task parameters
 let bundleFilePath: string = tl.getPathInput('bundleFilePath', true, true);
-let applicationType: string = tl.getInput('applicationType', true);
 let extractDirectoryPath: string = tl.getInput('extractDirectoryPath', true);
-
-
-async function runios() {
-    await tl.exec('unzip', '-qq ' + bundleFilePath + ' -d ' + extractDirectoryPath);
-}
-
-async function runAndroid() {
-    await tl.exec('unzip', '-qq ' + bundleFilePath + ' -d ' + extractDirectoryPath);
-}
-
-async function runUwp() {
-    tl.debug('UWP : Not implemented');
-}
-
+let certificateName: string = tl.getInput('certificateName', true);
+let provisioningId: string = tl.getInput('provisioningId', true);
 
 async function run() {
     try {
         //do your actions
-        tl.debug('applicationType:' + applicationType);
         tl.debug('bundleFilePath:' + bundleFilePath);
         tl.debug('extractDirectoryPath:' + extractDirectoryPath);
+        tl.debug('certificateName:' + certificateName);
+        tl.debug('provisioningId:' + provisioningId);
 
-        if (applicationType === "ios") {
-            await runios();
-        } else if (applicationType === "android") {
-            await runAndroid();
-        } else if (applicationType === "uwp") {
-            await runUwp();
-        }
+        var provisioningProfileRootPath = '';
+        var payloadAppPath = extractDirectoryPath + '/Payload/*.app/';
+
+        var profisioningProfile = provisioningProfileRootPath + '/' + provisioningId + '.mobileprovision';
+
+        await tl.exec('cp', profisioningProfile + ' ' + payloadAppPath + 'embedded.mobileprovision');
 
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, err.message);

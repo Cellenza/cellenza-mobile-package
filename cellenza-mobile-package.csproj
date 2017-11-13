@@ -42,14 +42,20 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cellenza-mobile-pack-ios\cellenza-mobile-pack-ios.js">
+      <DependentUpon>cellenza-mobile-pack-ios.ts</DependentUpon>
+    </Content>
     <Content Include="cellenza-mobile-unpack\cellenza-mobile-unpack.js">
       <DependentUpon>cellenza-mobile-unpack.ts</DependentUpon>
     </Content>
+    <Content Include="cellenza-mobile-unpack\icon.png" />
     <Content Include="static\images\logo.png" />
     <Content Include="static\images\Screen1.png" />
-    <Content Include="cellenza-mobile-unpack\icon.png" />
-    <Content Include="cellenza-mobile-unpack\task.json" />
+    <Content Include="cellenza-mobile-pack-ios\icon.png" />
+    <Content Include="cellenza-mobile-pack-ios\task.json" />
+    <Content Include="cellenza-mobile-pack-ios\package.json" />
     <Content Include="cellenza-mobile-unpack\package.json" />
+    <Content Include="cellenza-mobile-unpack\task.json" />
     <None Include="package.json" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="cellenza-mobile-unpack\cellenza-mobile-unpack.ts" />
+    <TypeScriptCompile Include="cellenza-mobile-pack-ios\cellenza-mobile-pack-ios.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />

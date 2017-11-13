@@ -21,7 +21,7 @@ function runios() {
 }
 function runAndroid() {
     return __awaiter(this, void 0, void 0, function* () {
-        tl.debug('Android : Not implemented');
+        yield tl.exec('unzip', '-qq ' + bundleFilePath + ' -d ' + extractDirectoryPath);
     });
 }
 function runUwp() {
