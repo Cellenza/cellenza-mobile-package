@@ -6,6 +6,7 @@ let bundleFilePath: string = tl.getPathInput('bundleFilePath', true, false);
 let extractDirectoryPath: string = tl.getPathInput('extractDirectoryPath', true, true);
 let certificateName: string = tl.getInput('certificateName', true);
 let provisioningId: string = tl.getInput('provisioningId', true);
+let entitlements: string = tl.getPathInput('entitlements', true, true);
 
 var provisioningProfileRootPath = '';
 
@@ -14,6 +15,7 @@ async function signApp(directoryPath: string) {
     var profisioningProfile = provisioningProfileRootPath + '/' + provisioningId + '.mobileprovision';
 
     await tl.cp(profisioningProfile, directoryPath + 'embedded.mobileprovision', '-f');
+    await tl.exec('/usr/bin/codesign', '-vvvv --verify -fs "' + certificateName + '" --no-strict --entitlements=' + entitlements + ' ' + directoryPath);
 }
 
 async function zipFile(directoryPath: string) {

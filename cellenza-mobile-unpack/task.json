@@ -31,7 +31,7 @@
       "type": "filePath",
       "label": "Bundle file path",
       "defaultValue": "",
-      "required": false,
+      "required": true,
       "helpMarkDown": "IPA, APK or APPX file"
     },
     {
@@ -39,7 +39,14 @@
       "type": "filePath",
       "label": "Extract directory path",
       "defaultValue": "",
-      "required": false
+      "required": true
+    },
+    {
+      "name": "entitlements",
+      "type": "filePath",
+      "label": "Entitlements.plist",
+      "defaultValue": "",
+      "required": true
     }
   ],
   "instanceNameFormat": "cellenza-mobile-unpack",
