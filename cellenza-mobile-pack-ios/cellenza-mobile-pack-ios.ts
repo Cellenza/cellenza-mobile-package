@@ -8,11 +8,11 @@ let certificateName: string = tl.getInput('certificateName', true);
 let provisioningId: string = tl.getInput('provisioningId', true);
 let entitlements: string = tl.getPathInput('entitlements', true, true);
 
-var provisioningProfileRootPath = '';
+var provisioningProfilePath = '';
 
 
 async function signApp(directoryPath: string) {
-    var profisioningProfile = provisioningProfileRootPath + '/' + provisioningId + '.mobileprovision';
+    var profisioningProfile = provisioningProfilePath;
 
     await tl.cp(profisioningProfile, directoryPath + 'embedded.mobileprovision', '-f');
     await tl.exec('/usr/bin/codesign', '-vvvv --verify -fs "' + certificateName + '" --no-strict --entitlements=' + entitlements + ' ' + directoryPath);
@@ -30,15 +30,13 @@ async function run() {
         tl.debug('certificateName:' + certificateName);
         tl.debug('provisioningId:' + provisioningId);
 
-        var paths = tl.findMatch ('/Users/', ['/Users/+([a-zA-Z])/']);
+        var paths = tl.findMatch('/Users/', ['**/' + provisioningId + '.mobileprovision']);
 
-        for (var user in paths) {
-            if (tl.exist(user + '/Library/MobileDevice/Provisioning Profiles/' + provisioningId + '.mobileprovision')) {
-                provisioningProfileRootPath = user + '/Library/MobileDevice/Provisioning Profiles/';
-            }
+        for (var path in paths) {
+            provisioningProfilePath = path;
         }
 
-        tl.debug('Find Provisioning profile on :' + provisioningProfileRootPath);
+        tl.debug('Find Provisioning profile on :' + provisioningProfilePath);
 
         var paths = tl.find(extractDirectoryPath);
 
