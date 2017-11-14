@@ -30,9 +30,7 @@ async function run() {
         tl.debug('certificateName:' + certificateName);
         tl.debug('provisioningId:' + provisioningId);
 
-        var paths = tl.find('/Users/');
-
-        paths = tl.match(paths, ['/Users/+([a-zA-Z])/']);
+        var paths = tl.findMatch ('/Users/', ['/Users/+([a-zA-Z])/']);
 
         for (var user in paths) {
             if (tl.exist(user + '/Library/MobileDevice/Provisioning Profiles/' + provisioningId + '.mobileprovision')) {
