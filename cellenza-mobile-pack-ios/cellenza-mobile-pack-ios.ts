@@ -30,13 +30,15 @@ async function run() {
         tl.debug('certificateName:' + certificateName);
         tl.debug('provisioningId:' + provisioningId);
 
-        var paths = tl.findMatch('/Users/', ['**/' + provisioningId + '.mobileprovision']);
+        var user = tl.getVariable('USER');
 
-        for (var path in paths) {
-            provisioningProfilePath = path;
-        }
+        provisioningProfilePath = '/Users/' +
+            user +
+            '/Library/MobileDevice/Provisioning Profiles/' +
+            provisioningId +
+            '.mobileprovision';
 
-        tl.debug('Find Provisioning profile on :' + provisioningProfilePath);
+        tl.debug('Use provisioning profile :' + provisioningProfilePath);
 
         var paths = tl.find(extractDirectoryPath);
 

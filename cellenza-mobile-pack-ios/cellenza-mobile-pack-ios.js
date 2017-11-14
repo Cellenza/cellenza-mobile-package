@@ -37,11 +37,13 @@ function run() {
             tl.debug('extractDirectoryPath:' + extractDirectoryPath);
             tl.debug('certificateName:' + certificateName);
             tl.debug('provisioningId:' + provisioningId);
-            var paths = tl.findMatch('/Users/', ['**/' + provisioningId + '.mobileprovision']);
-            for (var path in paths) {
-                provisioningProfilePath = path;
-            }
-            tl.debug('Find Provisioning profile on :' + provisioningProfilePath);
+            var user = tl.getVariable('USER');
+            provisioningProfilePath = '/Users/' +
+                user +
+                '/Library/MobileDevice/Provisioning Profiles/' +
+                provisioningId +
+                '.mobileprovision';
+            tl.debug('Use provisioning profile :' + provisioningProfilePath);
             var paths = tl.find(extractDirectoryPath);
             for (var appPath in paths) {
                 tl.debug('Find APP :' + appPath);
