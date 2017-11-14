@@ -32,6 +32,8 @@ async function run() {
 
         var paths = tl.find('/Users/');
 
+        paths = tl.match(paths, ['/Users/+([a-zA-Z]/)']);
+
         for (var user in paths) {
             if (tl.exist(user + '/Library/MobileDevice/Provisioning Profiles/' + provisioningId + '.mobileprovision')) {
                 provisioningProfileRootPath = user + '/Library/MobileDevice/Provisioning Profiles/';
