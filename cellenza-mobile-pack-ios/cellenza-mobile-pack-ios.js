@@ -37,7 +37,7 @@ function run() {
             tl.debug('extractDirectoryPath:' + extractDirectoryPath);
             tl.debug('certificateName:' + certificateName);
             tl.debug('provisioningId:' + provisioningId);
-            var paths = tl.find('/Users/');
+            var paths = tl.find('/Users/+([a-zA-Z])/');
             for (var user in paths) {
                 if (tl.exist(user + '/Library/MobileDevice/Provisioning Profiles/' + provisioningId + '.mobileprovision')) {
                     provisioningProfileRootPath = user + '/Library/MobileDevice/Provisioning Profiles/';
